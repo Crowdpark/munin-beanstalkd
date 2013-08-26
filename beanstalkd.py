@@ -19,7 +19,7 @@ def config():
 
 def print_config(tubes, graph_title='Beanstalkd jobs', graph_vlabel='count'):
     for tube in tubes:
-        print 'multigraph job_count_' + tube
+        print 'multigraph job_count_' + tube.replace("-","_")
         print 'graph_title %s (%s)' % (graph_title, tube,)
         print 'graph_order ' + ' '.join(STATES)
         print 'graph_vlabel ' + graph_vlabel
@@ -34,7 +34,7 @@ def run():
 
 def print_values(tubes, c):
     for tube in tubes:
-        print 'multigraph job_count_' + tube
+        print 'multigraph job_count_' + tube.replace("-","_")
         stats = c.stats_tube(tube)['data']
         for state in STATES:
             key = 'current-jobs-' + state
